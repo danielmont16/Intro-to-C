@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include <limits>
+
 using namespace std;
 
 // Task 2: Financial Calculator Application
@@ -23,7 +23,7 @@ int main()
         while (!(cin >> mountly_invest) || mountly_invest <= 0)
         {
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore(100, '\n');
             cout << "Error please check the input value" << endl;
             cout << "Enter your montly investment: ";
         }
@@ -33,7 +33,7 @@ int main()
         while (!(cin >> y_i_rate) || y_i_rate <= 0)
         {
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore(100, '\n');
             cout << "Error please check the input value" << endl;
             cout << "Enter yearly interest rate (in %): ";
         }
@@ -43,7 +43,7 @@ int main()
         while (!(cin >> n_years) || n_years <= 0)
         {
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore(100, '\n');
             cout << "Error please check the input value" << endl;
             cout << "Enter number of years: ";
         }
@@ -66,7 +66,7 @@ int main()
         {
 
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore(100, '\n');
             cout << "Error please check the input value" << endl;
             cout << "Do you want to enter another investment scenario? (y/n) :";
         }
@@ -87,7 +87,7 @@ int main()
         while (!(cin >> c_salary) || c_salary <= 0)
         {
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore(100, '\n');
             cout << "Error please check the input value" << endl;
             cout << "Enter current salary: ";
         }
@@ -103,7 +103,7 @@ int main()
         while (!(cin >> n_years) || n_years <= 0)
         {
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.ignore(100, '\n');
             cout << "Error please check the input value" << endl;
             cout << "Enter the numbers of years you have been working at the company: ";
         }
