@@ -61,7 +61,15 @@ int main()
 
         cout << endl;
         cout << "Do you want to enter another investment scenario? (y/n) :";
-        cin >> user_answer;
+
+        while (!(cin >> user_answer) || tolower(user_answer) != 'y' && tolower(user_answer) != 'n')
+        {
+
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Error please check the input value" << endl;
+            cout << "Do you want to enter another investment scenario? (y/n) :";
+        }
 
         if (tolower(user_answer) == 'n')
         {
