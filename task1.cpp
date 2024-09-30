@@ -1,27 +1,26 @@
 #include <iostream>
 using namespace std;
-
-// Include to allow conversion to lowercase
-#include <cctype>
-
 // Include to use pow
 #include <cmath>
 
 string name;
 char answer;
 
-string oddOrEven(int numberToCheck) {
+string oddOrEven(int numberToCheck)
+{
     // Checking if number modulo 2 is equals to 0
     return (numberToCheck % 2 == 0) ? "even" : "odd";
 }
 
-void getName() {
+void getName()
+{
     cout << "Enter your name: ";
     cin >> name;
     cout << endl;
 }
 
-void getBirthYear() {
+void getBirthYear()
+{
     int birthYear, age;
     cout << "Enter your birth year: ";
     cin >> birthYear;
@@ -31,48 +30,50 @@ void getBirthYear() {
     cout << "In 10 years, you will be " << age + 10 << " yars old." << endl;
 }
 
-void getFavoriteNumbers() {
-   
-    bool multipleNumbers = true; 
-    char answer;
-    int currentNumber;
+void getFavoriteNumbers()
+{
+    // Checking if the user wants to insert multiple numbers
+    bool multipleNumbers = true, firstNumber = false;
+    // Declare min, max, and counter initialized to 0 to only display odd vs even for the first number inserted
+    int currentNumber, min, max, counter = 0;
+    while (multipleNumbers)
+    {
 
-    vector<int> nArray;
-
-    while (multipleNumbers) {
         cout << "Enter your favorite number: ";
         cin >> currentNumber;
-
-        nArray.push_back(currentNumber);
-
+        cout << endl;
         cout << "Would you like to insert another favorite number (y/n): ";
         cin >> answer;
 
-        if (tolower(answer) == 'n') {
+        if (counter++ == 0)
+        {
+            min = currentNumber;
+            max = currentNumber;
+        }
+
+        // Validate if the current number is higher or lower than the current values of max and min
+        if (currentNumber > max)
+        {
+            max = currentNumber;
+        }
+
+        if (currentNumber < min)
+        {
+            min = currentNumber;
+        }
+
+        // If answer given is n then stop the loop
+        if ((answer == 'n' || answer == 'N'))
+        {
             multipleNumbers = false;
         }
     }
-
-    if (!nArray.empty()) {
-        int minNumber = numeric_limits<int>::max();
-        int maxNumber = numeric_limits<int>::min();
-
-        for (int num : nArray) {
-            if (num < minNumber) {
-                minNumber = num;
-            }
-            if (num > maxNumber) {
-                maxNumber = num; 
-            }
-        }
-        cout << "The Lowest favorite number entered: " << minNumber << endl;
-        cout << "The Highest favorite number entered: " << maxNumber << endl;
-    
-        }
-
+    cout << "The highest favorite number entered is " << max << "." << endl;
+    cout << "The lowest favorite number entered is " << min << "." << endl;
 }
 
-void getBasicInfo() {
+void getBasicInfo()
+{
     // Declaring variables
     string name;
     int number, age;
@@ -80,59 +81,55 @@ void getBasicInfo() {
     // Requesting inputs
     cout << "Enter your name: ";
     cin >> name;
-    cout << endl;
 
-    
     cout << "Enter your age: ";
     cin >> age;
-    cout << endl;
 
     cout << "Enter your favorite number: ";
     cin >> number;
-    cout << endl;
 
     // Checking if number is odd or even
     string oddEven = oddOrEven(number);
     cout << "Hello " << name << ", you are " << age << " years old." << endl;
-    cout << "Your favorite number is " << number << " which is "  << oddEven << endl; 
-
+    cout << "Your favorite number is " << number << " which is " << oddEven << endl;
 
     // Printing if odd or even
-    if (oddEven == "odd") {
+    if (oddEven == "odd")
+    {
         cout << "The cube of your favorite number is " << pow(number, 3) << endl;
-    } else {
+    }
+    else
+    {
         cout << "The square of your favorite number is " << pow(number, 2) << endl;
     }
-
-
 }
 
-
-int main() {
+int main()
+{
     int option;
     // Give options in menu
-    cout << "Please select one option:" << endl << "1 - General information" << endl << "2 - Age information" << endl << "3 - Favorite number" << endl;
+    cout << "Please select one option:" << endl
+         << "1 - General information" << endl
+         << "2 - Age information" << endl
+         << "3 - Favorite number" << endl;
     cin >> option;
 
     // Switch the option chosen
-    switch (option) {
-        case 1:
+    switch (option)
+    {
+    case 1:
         getBasicInfo();
         break;
 
-        
-        case 2:
+    case 2:
         getBirthYear();
         break;
 
-        
-        case 3:
+    case 3:
         getFavoriteNumbers();
         break;
 
-        default:
+    default:
         break;
-        
     }
 }
-
